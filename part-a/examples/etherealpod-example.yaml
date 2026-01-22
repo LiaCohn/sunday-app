@@ -1,0 +1,13 @@
+apiVersion: sunday.example.com/v1
+kind: EtherealPod
+metadata:
+  name: example-etherealpod
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80

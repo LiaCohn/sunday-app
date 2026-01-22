@@ -1,0 +1,22 @@
+apiVersion: sunday.example.com/v1
+kind: EtherealPod
+metadata:
+  name: sunday-app
+  namespace: default
+spec:
+  template:
+    metadata:
+      labels:
+        app: sunday-app
+        component: api
+    spec:
+      containers:
+      - name: sunday-api
+        image: sunday-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://sundayuser:sundaypass@postgres-service:5432/sundaydb"
